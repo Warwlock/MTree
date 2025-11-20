@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cde4d011ef4c2cd4ea1a5e4ae0a0bd74
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_PersistentViewDataDictionary: {instanceID: 0}
+  - leafTexture: {fileID: 2800000, guid: fa92e022faac9774fa119daa58d30e1e, type: 3}
+  - normalLeafTexture: {fileID: 2800000, guid: 484e5ae7bf0555b4d984e8c7cf893017, type: 3}
+  - barkTexture: {fileID: 2800000, guid: cbfeb2867c4dc9949806880460cd8903, type: 3}
+  - normalBarkTexture: {fileID: 2800000, guid: b3a8b02284c008548941ccb056fa869a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
