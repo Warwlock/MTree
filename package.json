@@ -16,6 +16,13 @@
     "graphics",
     "procedural"
   ],
+  "bugs": {
+    "url": "https://github.com/Warwlock/MTree/issues"
+  },
+  "repository": {
+     "type": "git",
+     "url": "ssh://git@github.com:Warwlock/MTree.git"
+  },
   "dependencies": {
       "com.unity.shadergraph": "12.1.16"
   },
