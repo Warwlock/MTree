@@ -1,7 +1,7 @@
 {
   "name": "com.warwlock.mtree",
   "displayName": "MTree",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "unity": "2021.3",
   "unityRelease": "45f2",
   "description": "A powerful procedural tree creation tool for Unity. Now it is completely Open Source (MIT).",
@@ -20,11 +20,11 @@
     "url": "https://github.com/Warwlock/MTree/issues"
   },
   "repository": {
-     "type": "git",
-     "url": "ssh://git@github.com:Warwlock/MTree.git"
+    "type": "git",
+    "url": "ssh://git@github.com:Warwlock/MTree.git"
   },
   "dependencies": {
-      "com.unity.shadergraph": "12.1.16"
+    "com.unity.shadergraph": "12.1.16"
   },
   "samples": [
     {
