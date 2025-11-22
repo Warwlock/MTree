@@ -1,7 +1,7 @@
 {
   "name": "com.warwlock.mtree",
   "displayName": "MTree",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "unity": "2021.3",
   "unityRelease": "45f2",
   "description": "A powerful procedural tree creation tool for Unity. Now it is completely Open Source (MIT).",
