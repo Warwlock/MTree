@@ -24,38 +24,39 @@ namespace Mtree
             if (instance.GetComponent<MtreeComponent>() == null)
                 return;
 
-            #if UNITY_2018_3_OR_NEWER
             string prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(instance);
-            #else
-            string prefabPath = AssetDatabase.GetAssetPath(PrefabUtility.GetPrefabParent(instance));
-            #endif
-                MtreeComponent[] trees = (MtreeComponent[])GameObject.FindObjectsOfType(typeof(MtreeComponent));
+            MtreeComponent[] trees =
+#if UNITY_6000_0_OR_NEWER
+                (MtreeComponent[])GameObject.FindObjectsByType(typeof(MtreeComponent), FindObjectsSortMode.None);
+#else
+                (MtreeComponent[])GameObject.FindObjectsOfType(typeof(MtreeComponent));
+#endif
             MtreeComponent originTree = null;
             foreach (MtreeComponent tree in trees)
             {
-                #if UNITY_2018_3_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
                 bool isInstance = PrefabUtility.GetPrefabInstanceStatus(tree) == PrefabInstanceStatus.Connected;
                 string parentPrefabPath = AssetDatabase.GetAssetPath(PrefabUtility.GetCorrespondingObjectFromSource(tree));
-                #else
+#else
                 bool isInstance = PrefabUtility.GetPrefabType(tree) == PrefabType.PrefabInstance;
                 string parentPrefabPath = AssetDatabase.GetAssetPath(PrefabUtility.GetPrefabParent(tree));
-                #endif
+#endif
                 if (isInstance && parentPrefabPath == prefabPath)
                 {
-                    #if UNITY_2018_3_OR_NEWER
+#if UNITY_2018_3_OR_NEWER
                     PrefabUtility.UnpackPrefabInstance(tree.gameObject, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
-                    #else
+#else
                     PrefabUtility.DisconnectPrefabInstance(tree);
-                    #endif
+#endif
                     originTree = tree;
                 }
             }
 
 
-            #if UNITY_2018_3_OR_NEWER // Unity 2017 crashes when deleting prefab at this stage. This part is therefore also done in the MtreeComponent editor
+#if UNITY_2018_3_OR_NEWER // Unity 2017 crashes when deleting prefab at this stage. This part is therefore also done in the MtreeComponent editor
             AssetDatabase.DeleteAsset(prefabPath);
             AssetDatabase.Refresh();
-            #endif
+#endif
 
             if (originTree == null)
                 return;
