@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-71964203459407436
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.ShaderGraph.Editor::UnityEditor.Rendering.BuiltIn.AssetVersion
+  version: 0
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -11,10 +24,11 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: e0a43faff4d99644e8707dd9bad91d13, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _DOUBLESIDED_ON
   m_InvalidKeywords:
   - _CUSTOMLIGHTMODE_ON
-  - _DOUBLESIDED_ON
   - _GLOSSYREFLECTIONS_OFF
   - _LEAFTYPE_DEFAULT
   - _SPECULARHIGHLIGHTS_OFF
@@ -23,12 +37,15 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2225
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentBackface
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - RayTracingPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -96,12 +113,15 @@ Material:
     m_Ints: []
     m_Floats:
     - GlobalWindInfluence: 1
+    - _AddPrecomputedVelocity: 0
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _Ao: 1
     - _Attentuation: 2
+    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueOffset: 0
     - _BlendMode: 0
     - _BumpScale: 1
     - _BumpStrength: 1.37
@@ -109,18 +129,25 @@ Material:
     - _ColorShifting: 1
     - _ColorSource: 1
     - _ColorVariation: 0.141
+    - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 0
     - _CullModeForward: 0
     - _CustomLightIntensity: 3
     - _CustomLightMode: 1
     - _Cutoff: 0.2
     - _Cutout: 0.253
+    - _DepthOffsetEnable: 0
     - _DetailNormalMapScale: 1
     - _DiffusionProfile: 1
     - _Distortion: 1.38
     - _DoubleSidedEnable: 1
+    - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
+    - _DstBlend2: 0
+    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableFogOnTransparent: 1
+    - _ExcludeFromTUAndAA: 0
     - _Float0: 0
     - _GlobalTurbulenceInfluence: 1
     - _GlobalWindInflucene: 1
@@ -143,14 +170,21 @@ Material:
     - _LightingGlobalIntensity: 1
     - _LocalWindStrength: 0
     - _MaskClipValue: 0.5
+    - _MaterialID: 1
+    - _MaterialTypeMask: 2
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OpaqueCullMode: 2
     - _Parallax: 0.02
+    - _PerPixelSorting: 0
     - _Power: 1
     - _QueueControl: -1
     - _QueueOffset: 0
+    - _RayTracing: 0
     - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _SSSPower: 2.5
@@ -168,21 +202,22 @@ Material:
     - _SpecularHighlights: 0
     - _Specularity: 0
     - _SrcBlend: 1
-    - _StencilRef: 2
-    - _StencilRefDepth: 0
-    - _StencilRefDistortionVec: 64
-    - _StencilRefGBuffer: 2
-    - _StencilRefMV: 128
-    - _StencilWriteMask: 3
-    - _StencilWriteMaskDepth: 48
-    - _StencilWriteMaskDistortionVec: 64
-    - _StencilWriteMaskGBuffer: 51
-    - _StencilWriteMaskMV: 176
+    - _StencilRef: 0
+    - _StencilRefDepth: 8
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 40
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
     - _SubsurfaceDistortion: 0.153
     - _SubsurfaceIntensity: 9.86
     - _SubsurfaceLightIntensity: 0.53
     - _SubsurfaceMode: 0
     - _SubsurfacePower: 5
+    - _SupportDecals: 1
     - _SurfaceType: 0
     - _ThicknessStrength: 1
     - _TransAmbient: 0.479
@@ -201,9 +236,14 @@ Material:
     - _TranslucenyMode: 0
     - _TranslucenyPower: 3.71
     - _Transmission: 3
+    - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 0
     - _UVSec: 0
     - _UseShadowThreshold: 0
     - _Value: 1.36
@@ -235,6 +275,22 @@ Material:
     - _TransmissionTint: {r: 0.2352941, g: 0.3294118, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &6040666925878734063
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da692e001514ec24dbc4cca1949ff7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Editor::UnityEditor.Rendering.HighDefinition.AssetVersion
+  version: 13
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
 --- !u!114 &8624611265819847260
 MonoBehaviour:
   m_ObjectHideFlags: 11
