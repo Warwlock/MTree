@@ -97,7 +97,11 @@ float _WindPulse;
 float _WindDirection;
 float _WindTurbulence;
 
-void WindProps_float(out float WindStrength,
+float _WindRadius;
+float3 _WindPosition;
+int _IsLocalWind;
+
+void WindProps_float(float3 pos, out float WindStrength,
 			out float RandomWindOffset,
 			out float WindPulse,
 			out float WindDirection,
@@ -108,6 +112,13 @@ void WindProps_float(out float WindStrength,
 	WindPulse = _WindPulse;
 	WindDirection = _WindDirection;
 	WindTurbulence = _WindTurbulence;
+
+	if (_IsLocalWind == 1)
+	{
+		float dst = dot(pos, _WindPosition);
+		dst = max(0, _WindRadius * _WindRadius - dst) / (_WindRadius * _WindRadius);
+		WindStrength = WindStrength * dst;// (exp(-dst) * (1 - dst));
+	}
 }
 
 void GetMatrix_float(out float4x4 objTOworld)

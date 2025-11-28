@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 [ExecuteAlways]
+[RequireComponent(typeof(WindZone))]
 public class MtreeWind : MonoBehaviour {
 
     [Header("Global Windzone")]
@@ -19,7 +20,8 @@ public class MtreeWind : MonoBehaviour {
     [Range(0,1)]public float BillboardWindInfluence = .5f;
 
     // Updatecheck values
-    float m_windStrength, m_windDirection, m_windPulse, m_windTurbulence;
+    float m_windStrength, m_windDirection, m_windPulse, m_windTurbulence, m_windRadius;
+    Vector3 m_position;
     void Awake(){
         if(!TryGetComponent(out windZone))
         {
@@ -28,13 +30,17 @@ public class MtreeWind : MonoBehaviour {
     }
 
 	void Update () {
-        if(windZone){
-            if(m_windStrength != windZone.windMain || m_windDirection != windZone.transform.rotation.eulerAngles.y || m_windPulse != windZone.windPulseFrequency || m_windTurbulence != windZone.windTurbulence){
+        if(windZone != null){
+            if(m_windStrength != windZone.windMain || m_windDirection != windZone.transform.rotation.eulerAngles.y || m_position != transform.position ||
+                m_windPulse != windZone.windPulseFrequency || m_windTurbulence != windZone.windTurbulence || m_windRadius != windZone.radius)
+            {
                 UpdateWindZone();
                 m_windStrength = windZone.windMain;
                 m_windDirection = windZone.transform.rotation.eulerAngles.y;
                 m_windPulse = windZone.windPulseFrequency;
                 m_windTurbulence = windZone.windTurbulence;
+                m_windRadius = windZone.radius;
+                m_position = transform.position;
             }
         }
     }
@@ -48,6 +54,10 @@ public class MtreeWind : MonoBehaviour {
     }
     public void UpdateWindZone()
     {
+        Shader.SetGlobalFloat("_WindRadius", windZone.radius);
+        Shader.SetGlobalVector("_WindPosition", transform.position);
+        Shader.SetGlobalInt("_IsLocalWind", windZone.mode == WindZoneMode.Spherical ? 1 : 0);
+
         Shader.SetGlobalFloat("_WindStrength",windZone.windMain + windStrength);
         Shader.SetGlobalFloat("_WindDirection",windZone.transform.localRotation.eulerAngles.y + windDirection);
         Shader.SetGlobalFloat("_WindPulse",windZone.windPulseFrequency + windPulse);
@@ -57,10 +67,8 @@ public class MtreeWind : MonoBehaviour {
 
         Shader.SetGlobalFloat("_RandomWindOffset",windRandomness);
 
-        if(windZone)
+        if(windZone != null)
             UpdateWindZone();
-        if(!windZone)
-            UpdateWind();
 
         if(BillboardWind){
             Shader.SetGlobalInt("BillboardWindEnabled",0);
@@ -85,10 +93,8 @@ public class MtreeWind : MonoBehaviour {
 		ResetToZero ();
 	}
 	public void OnEnable(){
-		if (windZone)
+		if (windZone != null)
 			UpdateWindZone ();
-		else
-			UpdateWind ();
 	}
         
 }
