@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class MtreeWind : MonoBehaviour {
 
     [Header("Global Windzone")]
@@ -21,9 +21,9 @@ public class MtreeWind : MonoBehaviour {
     // Updatecheck values
     float m_windStrength, m_windDirection, m_windPulse, m_windTurbulence;
     void Awake(){
-        windZone = (WindZone)FindObjectOfType(typeof(WindZone));
-        if(!windZone){
-			windZone = (WindZone)gameObject.AddComponent (typeof(WindZone));
+        if(!TryGetComponent(out windZone))
+        {
+			windZone = gameObject.AddComponent<WindZone>();
         }
     }
 

@@ -375,7 +375,11 @@ public class MtreeComponent : MonoBehaviour
                 name += "_1";
             }
         }
+#if UNITY_6000_0_OR_NEWER
+        lights = FindObjectsByType<Light>(FindObjectsSortMode.None);
+#else
         lights = FindObjectsOfType<Light>();
+#endif
         foreach (var dl in lights)
         {
             dl.enabled = false;
@@ -429,7 +433,7 @@ public class MtreeComponent : MonoBehaviour
 
         Object prefab;
 
-        #if (UNITY_2017 || UNITY_2018_1 || UNITY_2018_2)
+#if (UNITY_2017 || UNITY_2018_1 || UNITY_2018_2)
         if (replacePrefab)
         {
             Object targetPrefab = AssetDatabase.LoadAssetAtPath(path + "/" + name + ".prefab", typeof(GameObject));
@@ -437,7 +441,7 @@ public class MtreeComponent : MonoBehaviour
         }
         else
             prefab = PrefabUtility.CreatePrefab(prefabPath, TreeObject, ReplacePrefabOptions.ConnectToPrefab);
-        #else 
+#else
         prefab = PrefabUtility.SaveAsPrefabAssetAndConnect(TreeObject, prefabPath, InteractionMode.AutomatedAction);
 #endif
         
@@ -478,5 +482,5 @@ public class MtreeComponent : MonoBehaviour
 			
 	}
     
-    #endif
-}
+#endif
+    }
