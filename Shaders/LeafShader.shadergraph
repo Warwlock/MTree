@@ -7429,7 +7429,7 @@
     "m_OpaqueCullMode": 2,
     "m_SortPriority": 0,
     "m_AlphaTest": false,
-    "m_ExcludeFromTUAndAA": false,
+    "m_ExcludeFromTUAndAA": true,
     "m_TransparentDepthPrepass": false,
     "m_TransparentDepthPostpass": false,
     "m_SupportLodCrossFade": false,
@@ -10530,7 +10530,7 @@
     "m_TransparentDepthPrepass": false,
     "m_TransparentDepthPostpass": false,
     "m_TransparentPerPixelSorting": false,
-    "m_SupportLodCrossFade": false
+    "m_SupportLodCrossFade": true
 }
 
 {
@@ -25478,8 +25478,8 @@
     "m_ObjectId": "ac6e20ad64b941ccbe1072452c1666cc",
     "m_Title": "LOD Fade",
     "m_Position": {
-        "x": -3654.999755859375,
-        "y": -399.0000305175781
+        "x": -3655.0,
+        "y": -399.0
     }
 }
 

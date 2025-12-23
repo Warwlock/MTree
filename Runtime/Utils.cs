@@ -36,48 +36,17 @@ namespace Mtree
         {
             Shader shader = null;
 
-            switch(GetCurrentPipeline())
-            {
-                case "legacy":
-                    shader = Shader.Find("Mtree/Bark");
-                break;
+            shader = Shader.Find("Shader Graphs/BarkShader");
 
-                case "lwrp":
-                    shader = Shader.Find("Mtree/SRP/Bark LWRP");
-                break;
-
-                case "hdrp":
-                    shader = Shader.Find("Mtree/SRP/Bark HDRP");
-                break;
-
-                case "urp":
-                    shader = Shader.Find("Mtree/SRP/Bark URP");
-                break;
-            }
             return shader;
         }
 
         public static Shader GetLeafShader()
         {
             Shader shader = null;
-            
-            switch(GetCurrentPipeline()){
-                case "legacy":
-                    shader = Shader.Find("Mtree/Leafs");
-                break;
 
-                case "lwrp":
-                    shader = Shader.Find("Mtree/SRP/Leafs LWRP");
-                break;
+            shader = Shader.Find("Shader Graphs/LeafShader");
 
-                case "hdrp":
-                    shader = Shader.Find("Mtree/SRP/Leafs HDRP");
-                break;
-
-                case "urp":
-                    shader = Shader.Find("Mtree/SRP/Leafs URP");
-                break;
-            }
             return shader;
         }
 

@@ -167,9 +167,9 @@ namespace Mtree
             if (Utils.GetCurrentPipeline() == "hdrp")
             {
                 
-                tree.isHDRP = true;
+                /*tree.isHDRP = true;
 	            tree.hdrpAsset = UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline;
-                UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline = null;
+                UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline = null;*/
                 
             }
         }
