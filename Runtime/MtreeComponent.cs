@@ -40,8 +40,8 @@ public class MtreeComponent : MonoBehaviour
     public int BB_hasTopCard = 1;
     public int BB_isSingleSided = 1;
 
-	public MtreeBezier mtreeBezier;
-	public int hasBezier = 0;
+    public MtreeBezier mtreeBezier;
+    public int hasBezier = 0;
 #if UNITY_2018_3_OR_NEWER
     public bool isHDRP = false;
     public RenderPipelineAsset hdrpAsset;
@@ -52,7 +52,7 @@ public class MtreeComponent : MonoBehaviour
         filter = GetComponent<MeshFilter>();
         tree = new MTree(transform);
 
-        if(LODs == null || LODs.Count == 0)
+        if (LODs == null || LODs.Count == 0)
             for (int i = 0; i < 4; i++)
             {
                 AddLODLevel(false);
@@ -116,7 +116,7 @@ public class MtreeComponent : MonoBehaviour
 
     public void UpdateTreeFunctions()
     {
-        if (treeFunctionsAssets == null ||treeFunctionsAssets.Count == 0)
+        if (treeFunctionsAssets == null || treeFunctionsAssets.Count == 0)
         {
             treeFunctionsAssets = new List<TreeFunctionAsset>();
             AddTreeFunction<TrunkFunction>();
@@ -160,7 +160,7 @@ public class MtreeComponent : MonoBehaviour
 
 
         if (treeFunctionsAssets.Count > 0)
-            tree.GenerateMeshData(treeFunctionsAssets[0] as TrunkFunction, LODs[LodIndex].simplifyLeafs, LODs[LodIndex].radialResolution,VColBarkModifier,VColLeafModifier);
+            tree.GenerateMeshData(treeFunctionsAssets[0] as TrunkFunction, LODs[LodIndex].simplifyLeafs, LODs[LodIndex].radialResolution, VColBarkModifier, VColLeafModifier);
 
         mesh.vertices = tree.verts;
         mesh.normals = tree.normals;
@@ -208,7 +208,7 @@ public class MtreeComponent : MonoBehaviour
 
     public void BakeAo(bool async = false)
     {
-        if (filter == null ||filter.sharedMesh == null)
+        if (filter == null || filter.sharedMesh == null)
         {
             GenerateTree();
         }
@@ -231,7 +231,7 @@ public class MtreeComponent : MonoBehaviour
         tree.Simplify(LODs[LodIndex].simplifyAngleThreshold, LODs[LodIndex].simplifyRadiusThreshold);
         Mesh mesh = CreateMesh();
         filter.mesh = mesh;
-        
+
         BakeAo(!instantAo);
         UpdateMaterials();
         return mesh;
@@ -304,7 +304,7 @@ public class MtreeComponent : MonoBehaviour
         MeshRenderer meshRenderer = billboard.AddComponent<MeshRenderer>();
 
         Texture billboardTexture = (Texture2D)AssetDatabase.LoadAssetAtPath(texturePath, typeof(Texture2D)); // create material
-        Material mat = bill.CreateMaterial(billboardTexture,usingHDRP);
+        Material mat = bill.CreateMaterial(billboardTexture, usingHDRP);
         meshRenderer.sharedMaterial = mat;
         AssetDatabase.CreateAsset(mat, path + name + "billboard.mat");
         return billboard;
@@ -344,31 +344,41 @@ public class MtreeComponent : MonoBehaviour
         Shader.SetGlobalFloat("_WindPulse", 0);
         Shader.SetGlobalFloat("_WindTurbulence", 0);
     }
-    public void SaveAsPrefab(bool groupedSave = false,bool isHDRP = false)
+    public void SaveAsPrefab(bool groupedSave = false, bool isHDRP = false)
     {
+        StartCoroutine(SaveAsPrefabCoroutine(groupedSave, isHDRP));
+    }
+    IEnumerator SaveAsPrefabCoroutine(bool groupedSave = false, bool isHDRP = false)
+    {
+        int layer = gameObject.layer;
+        gameObject.layer = 31;
+
+        yield return new WaitForSeconds(1f); // If we don't wait for a while, camera doesnt render the layer
+
         var oldMesh = filter.sharedMesh;
         string name = gameObject.name;
         string path = saveTreeFolder;
+        Debug.Log(path);
         if (string.IsNullOrEmpty(path))
-            return;
+            yield break;
 
-        #if (UNITY_2017 || UNITY_2018_1 || UNITY_2018_2)
+#if (UNITY_2017 || UNITY_2018_1 || UNITY_2018_2)
          bool replacePrefab = false; //=> value never Used, taged by dan_wipf => used for unity up to 2018.2
-        #endif
+#endif
 
         if (!System.IO.Directory.Exists(path))
         {
             EditorUtility.DisplayDialog("Invalid Path", "The path is not valid, you can chose it with the find folder button", "Ok");
-            return;
+            yield break;
         }
         if (AssetDatabase.LoadAssetAtPath(path + "/" + name + ".prefab", typeof(GameObject))) // Overriding prefab dialog
         {
             if (EditorUtility.DisplayDialog("Are you sure?", "The prefab already exists. Do you want to overwrite it?", "Yes", "No"))
             {
                 FileUtil.DeleteFileOrDirectory(Path.Combine(path, name + "_meshes"));
-                #if (UNITY_2017 || UNITY_2018_1 || UNITY_2018_2)
+#if (UNITY_2017 || UNITY_2018_1 || UNITY_2018_2)
                 replacePrefab = true; //  => value never Used, taged by dan_wipf => used for unity up to 2018.2
-                #endif
+#endif
             }
             else
             {
@@ -404,7 +414,7 @@ public class MtreeComponent : MonoBehaviour
         for (LodIndex = LODs.Count - 1; LodIndex >= 0; LodIndex--) // create and save all LOD meshes
         {
             string meshPath = meshesFolder + name + "_LOD" + LodIndex + ".mesh"; //updating path for each LOD
-            Mesh mesh = GenerateTree(instantAo:true);
+            Mesh mesh = GenerateTree(instantAo: true);
             meshes[LodIndex] = mesh;
             AssetDatabase.CreateAsset(mesh, meshPath);
         }
@@ -444,7 +454,7 @@ public class MtreeComponent : MonoBehaviour
 #else
         prefab = PrefabUtility.SaveAsPrefabAssetAndConnect(TreeObject, prefabPath, InteractionMode.AutomatedAction);
 #endif
-        
+
         AssetDatabase.SaveAssets();
         DestroyImmediate(TreeObject);
         if (!groupedSave)
@@ -462,25 +472,30 @@ public class MtreeComponent : MonoBehaviour
         {
             dl.enabled = true;
         }
-    }
-	public void BezierManager(){
-		if (hasBezier == 1) {
-			mtreeBezier = gameObject.AddComponent<MtreeBezier> ();
-			mtreeBezier.MTreeDoBezier = true;
-			GenerateTree ();
-		}
-		if (mtreeBezier == null)
-			mtreeBezier = GetComponent<MtreeBezier> ();
-		
-		if (hasBezier == 0 && mtreeBezier != null) {
-			mtreeBezier.MTreeDoBezier = false;
-			mtreeBezier.MTreeLeafDirection = false;
-			DestroyImmediate (mtreeBezier);
-			GenerateTree ();
-			}
 
-			
-	}
-    
-#endif
+        gameObject.layer = layer;
     }
+    public void BezierManager()
+    {
+        if (hasBezier == 1)
+        {
+            mtreeBezier = gameObject.AddComponent<MtreeBezier>();
+            mtreeBezier.MTreeDoBezier = true;
+            GenerateTree();
+        }
+        if (mtreeBezier == null)
+            mtreeBezier = GetComponent<MtreeBezier>();
+
+        if (hasBezier == 0 && mtreeBezier != null)
+        {
+            mtreeBezier.MTreeDoBezier = false;
+            mtreeBezier.MTreeLeafDirection = false;
+            DestroyImmediate(mtreeBezier);
+            GenerateTree();
+        }
+
+
+    }
+
+#endif
+}
