@@ -59,11 +59,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-<<<<<<< HEAD
-  m_CustomRenderQueue: 2225
-=======
   m_CustomRenderQueue: -1
->>>>>>> main
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:

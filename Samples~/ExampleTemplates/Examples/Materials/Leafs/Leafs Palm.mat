@@ -54,28 +54,17 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-<<<<<<< HEAD
-=======
   - _ALPHATEST_ON
->>>>>>> main
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-<<<<<<< HEAD
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2225
-  stringTagMap:
-    MotionVector: User
-=======
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2475
   stringTagMap:
     MotionVector: User
     RenderType: TransparentCutout
->>>>>>> main
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -162,13 +151,8 @@ Material:
     - _DiffusionProfile: 1
     - _Distortion: 1.38
     - _DoubleSidedEnable: 1
-<<<<<<< HEAD
-    - _DoubleSidedGIMode: 0
-    - _DoubleSidedNormalMode: 2
-=======
     - _DoubleSidedGIMode: 1
     - _DoubleSidedNormalMode: 1
->>>>>>> main
     - _DstBlend: 0
     - _DstBlend2: 0
     - _EnableBlendModePreserveSpecularLighting: 1
@@ -282,11 +266,7 @@ Material:
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZTestDepthEqualForOpaque: 3
-<<<<<<< HEAD
-    - _ZTestGBuffer: 4
-=======
     - _ZTestGBuffer: 3
->>>>>>> main
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - _ZWriteControl: 1
@@ -298,7 +278,7 @@ Material:
     - _ColorVariation: {r: 0.9862069, g: 1, b: 0, a: 1}
     - _CustomLightColor: {r: 0.35427305, g: 0.5283019, b: 0, a: 1}
     - _DiffusionProfile_asset: {r: -6.315383e-37, g: -7.0622125e-27, b: 4.6171996e-22, a: -8.3853756e-30}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightingCustomColor: {r: 0.0470588, g: 0.18039218, b: 0.06274508, a: 1}
