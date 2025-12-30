@@ -54,15 +54,17 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ALPHATEST_ON
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2475
   stringTagMap:
     MotionVector: User
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -115,7 +117,7 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 1
     - _AlphaCutoff: 0.5
-    - _AlphaCutoffEnable: 0
+    - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 1
@@ -142,15 +144,15 @@ Material:
     - _CullModeForward: 0
     - _CustomLightIntensity: 3
     - _CustomLightMode: 1
-    - _Cutoff: 0.39
+    - _Cutoff: 0.396
     - _Cutout: 0.5
     - _DOUBLESIDEDNORMALMODE: 0
     - _DepthOffsetEnable: 0
     - _DiffusionProfile: 1
     - _Distortion: 1.38
     - _DoubleSidedEnable: 1
-    - _DoubleSidedGIMode: 0
-    - _DoubleSidedNormalMode: 2
+    - _DoubleSidedGIMode: 1
+    - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _DstBlend2: 0
     - _EnableBlendModePreserveSpecularLighting: 1
@@ -259,12 +261,12 @@ Material:
     - _UseShadowThreshold: 0
     - _Value: 1
     - _WindMode: 3
-    - _WindModeLeaves: 0
+    - _WindModeLeaves: 1
     - _WindStrength: 0.1
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZTestDepthEqualForOpaque: 3
-    - _ZTestGBuffer: 4
+    - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - _ZWriteControl: 1
@@ -276,7 +278,7 @@ Material:
     - _ColorVariation: {r: 0.9862069, g: 1, b: 0, a: 1}
     - _CustomLightColor: {r: 0.35427305, g: 0.5283019, b: 0, a: 1}
     - _DiffusionProfile_asset: {r: -6.315383e-37, g: -7.0622125e-27, b: 4.6171996e-22, a: -8.3853756e-30}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightingCustomColor: {r: 0.0470588, g: 0.18039218, b: 0.06274508, a: 1}
