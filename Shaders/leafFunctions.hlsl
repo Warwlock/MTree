@@ -81,8 +81,16 @@ void worldOutNormal_float(float3 worldTangent, float3 worldBiTangent, float3 wor
 void GetCommFunc_float(out float4 dir, out float4 col, out float fade)
 {
 	#ifndef SHADERGRAPH_PREVIEW
+	#if defined(UNIVERSAL_LIGHTING_INCLUDED)
 		dir = _MainLightPosition;
 		col = _MainLightColor;
+	#elif defined(HD_LIGHTING_INCLUDED)
+		dir = half4(-0.3, -0.8, 0.6, 1);
+		col = 0;
+	#else
+		dir = half4(-0.3, -0.8, 0.6, 1);
+		col = 1;
+	#endif
 	#else
 		dir = float4(0, 1, 0, 0);
 		col = float4(1, 1, 1, 1);
@@ -123,7 +131,7 @@ void WindProps_float(float3 pos, out float WindStrength,
 
 void GetMatrix_float(out float4x4 objTOworld)
 {
-	objTOworld = GetObjectToWorldMatrix();
+	objTOworld = UNITY_MATRIX_M;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

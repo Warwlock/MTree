@@ -38,6 +38,10 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+<<<<<<< HEAD
+=======
+  - _ALPHATEST_ON
+>>>>>>> main
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   m_InvalidKeywords:
@@ -45,11 +49,20 @@ Material:
   - _LEAFTYPE_DEFAULT
   - _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
+<<<<<<< HEAD
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2225
   stringTagMap:
     MotionVector: User
+=======
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 2475
+  stringTagMap:
+    MotionVector: User
+    RenderType: TransparentCutout
+>>>>>>> main
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -137,7 +150,7 @@ Material:
     - GlobalWindInfluence: 1
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoff: 0.5
-    - _AlphaCutoffEnable: 0
+    - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _Ao: 0.854
@@ -279,7 +292,11 @@ Material:
     - _WindQuality: 0
     - _WindStrength: 0.1
     - _ZTestDepthEqualForOpaque: 3
+<<<<<<< HEAD
     - _ZTestGBuffer: 4
+=======
+    - _ZTestGBuffer: 3
+>>>>>>> main
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - __dirty: 0
