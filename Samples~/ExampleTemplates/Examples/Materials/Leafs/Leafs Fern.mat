@@ -25,17 +25,26 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+<<<<<<< HEAD
+=======
   - _ALPHATEST_ON
+>>>>>>> main
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
+<<<<<<< HEAD
+  m_CustomRenderQueue: 2225
+  stringTagMap:
+    MotionVector: User
+=======
   m_CustomRenderQueue: 2475
   stringTagMap:
     MotionVector: User
     RenderType: TransparentCutout
+>>>>>>> main
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -210,9 +219,15 @@ Material:
     - _UseShadowThreshold: 0
     - _Value: 1
     - _WindMode: 3
+<<<<<<< HEAD
+    - _WindModeLeaves: 2
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 4
+=======
     - _WindModeLeaves: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
+>>>>>>> main
     - _ZTestTransparent: 4
     - _ZWrite: 1
     - __dirty: 1

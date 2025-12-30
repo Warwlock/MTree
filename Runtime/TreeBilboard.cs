@@ -18,7 +18,7 @@ namespace Mtree
         private Rect[] rects;
         private float ZBuffer = 0.03f;
         private float TopCardPosition = 0.5f;
-        private bool hasTopCard,isSingleSided;
+        private bool hasTopCard, isSingleSided;
         int cards = 2;
         public Billboard(Camera cam, GameObject target, int width, int height, float TopCardPosition, bool hasTopCard, bool isSingleSided)
         {
@@ -38,8 +38,6 @@ namespace Mtree
 
             sides = new Texture2D[cards];
         }
-
-
 
         public void SetupCamera()
         {
@@ -66,21 +64,33 @@ namespace Mtree
         public void Render(string path)
         {
             Bounds bb = target.GetComponent<Renderer>().bounds;
-            int layer = target.layer;
-            target.layer = 31;
+            // Object layer mask assignment moved to MonoBehaviour
             cam.cullingMask = 1 << 31;
             var originalPos = cam.transform.position;
             cam.transform.position = new Vector3(target.transform.position.x, bb.center.y, target.transform.position.z);
+
+            RenderPipeline.StandardRequest request = new RenderPipeline.StandardRequest();
+
             for (int i = 0; i < cards; i++)
             {
                 RenderTexture currentRT = RenderTexture.active;
                 RenderTexture camText = new RenderTexture(width, height, 16);
 
-                cam.targetTexture = camText;
-                RenderTexture.active = cam.targetTexture;
-                cam.Render();
-                Texture2D image = new Texture2D(cam.targetTexture.width, cam.targetTexture.height);
-                image.ReadPixels(new Rect(0, 0, cam.targetTexture.width, cam.targetTexture.height), 0, 0);
+                if (RenderPipeline.SupportsRenderRequest(cam, request))
+                {
+                    request.destination = camText;
+                    RenderTexture.active = camText;
+                    RenderPipeline.SubmitRenderRequest(cam, request);
+                }
+                else
+                {
+                    cam.targetTexture = camText;
+                    RenderTexture.active = cam.targetTexture;
+                    cam.Render();
+                }
+
+                Texture2D image = new Texture2D(camText.width, camText.height);
+                image.ReadPixels(new Rect(0, 0, camText.width, camText.height), 0, 0);
 
                 if (i == 5)
                 {
@@ -91,11 +101,10 @@ namespace Mtree
                         {
                             int x = index % image.width;
                             int y = index / image.width;
-                            x = image.width - 1 - x;
                             return originalPixels[y * image.width + x];
-                        }
-                        );
-                    image.SetPixels32(flippedPixels.ToArray());
+                        })
+                        .ToArray();
+                    image.SetPixels32(flippedPixels);
                 }
                 image.Apply();
                 RenderTexture.active = currentRT;
@@ -118,7 +127,7 @@ namespace Mtree
                         cam.farClipPlane = bb.extents.y * 3;
                         cam.nearClipPlane = -bb.extents.y * 3;
                     }
-                   
+
                 }
                 if (!isSingleSided)
                 {
@@ -140,7 +149,6 @@ namespace Mtree
 
                     }
                 }
-
             }
 
             Texture2D atlas = new Texture2D(width, height);
@@ -150,7 +158,6 @@ namespace Mtree
             System.IO.File.WriteAllBytes(path, bytes);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            target.layer = layer;
         }
 
         public Mesh CreateMesh()
@@ -196,13 +203,13 @@ namespace Mtree
                     v2.x += ZBuffer;
                     v3.x += ZBuffer;
                 }
-                
+
                 if (i == 4 || !isSingleSided && i == 2)
                 {
                     float height = Mathf.Lerp(0, bb.extents.y * 2, TopCardPosition);
                     float bbX = bb.extents.x * 2 - (rects[i].width / 2);
                     float bbZ = bb.extents.z * 2 - (rects[i].height / 2);
-                    
+
                     v0 = new Vector3(-bbX, height, bbZ);
                     v1 = new Vector3(bbX, height, bbZ);
                     v2 = new Vector3(bbX, height, -bbZ);
@@ -212,8 +219,8 @@ namespace Mtree
                 if (i == 5)
                 {
                     float height = Mathf.Lerp(0, bb.extents.y * 2, TopCardPosition) - ZBuffer;
-                    float bbX = bb.extents.x * 2 - (rects[i-1].width / 2);
-                    float bbZ = bb.extents.z * 2 - (rects[i-1].height / 2);
+                    float bbX = bb.extents.x * 2 - (rects[i - 1].width / 2);
+                    float bbZ = bb.extents.z * 2 - (rects[i - 1].height / 2);
 
                     v0 = new Vector3(bbX, height, bbZ);
                     v1 = new Vector3(-bbX, height, bbZ);

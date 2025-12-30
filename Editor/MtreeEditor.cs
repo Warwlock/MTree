@@ -96,8 +96,8 @@ namespace Mtree
 
 
             EditorGUILayout.BeginHorizontal();
-            
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("template"),new GUIContent("Template"), true);
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("template"), new GUIContent("Template"), true);
             serializedObject.ApplyModifiedProperties();
             string SaveButton = "Save Template"; if (tree.template != null) SaveButton = "Override"; else SaveButton = "Save";
 
@@ -107,15 +107,15 @@ namespace Mtree
                 serializedObject.FindProperty("selectedFunctionIndex").intValue = 0;
                 serializedObject.FindProperty("template").objectReferenceValue = tree.template;
                 serializedObject.ApplyModifiedProperties();
-                
+
                 tree.FromTemplate();
                 UpdateTree();
-                
+
             }
             EditorGUI.EndDisabledGroup();
-            if(GUILayout.Button(SaveButton + " Template"))
+            if (GUILayout.Button(SaveButton + " Template"))
             {
-                if(SaveButton == "Override")
+                if (SaveButton == "Override")
                 {
                     string templatePath = AssetDatabase.GetAssetPath(tree.template);
                     AssetDatabase.DeleteAsset(templatePath);
@@ -144,6 +144,10 @@ namespace Mtree
         private void DisplayLodSelection()
         {
             EditorGUI.BeginChangeCheck();
+#if UNITY_6000_2_OR_NEWER
+            var useMeshLod = serializedObject.FindProperty("useMeshLOD");
+            useMeshLod.boolValue = GUILayout.Toggle(useMeshLod.boolValue, "Use MeshLOD", "Button");
+#endif
             SerializedProperty lodIndexProp = serializedObject.FindProperty("LodIndex");
             lodIndexProp.intValue = EditorGUILayout.Popup("LOD", lodIndexProp.intValue, lodOptions);
             if (EditorGUI.EndChangeCheck())
@@ -157,52 +161,71 @@ namespace Mtree
         {
             EditorGUI.BeginChangeCheck();
             tree.LODs[tree.LodIndex].DrawProperties();
+#if UNITY_6000_2_OR_NEWER
+            var useMeshLod = serializedObject.FindProperty("useMeshLOD");
+            if (useMeshLod.boolValue)
+            {
+                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                GUILayout.Label("MeshLOD Selection Curve");
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("slope"));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("bias"));
+                EditorGUILayout.EndVertical();
+                serializedObject.ApplyModifiedProperties();
+            }
+#endif
             if (EditorGUI.EndChangeCheck())
                 UpdateTree();
         }
-        #if UNITY_2018_3_OR_NEWER
-        
+#if UNITY_2018_3_OR_NEWER
+
         private void SetupLegacyMode()
         {
             if (Utils.GetCurrentPipeline() == "hdrp")
             {
-                
+
                 /*tree.isHDRP = true;
 	            tree.hdrpAsset = UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline;
                 UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline = null;*/
-                
+
             }
         }
-        private void SetupHDRPMode(){
-            if(tree.isHDRP){
+        private void SetupHDRPMode()
+        {
+            if (tree.isHDRP)
+            {
                 UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline = tree.hdrpAsset;
                 tree.isHDRP = false;
             }
         }
-        private void SetupLegacyMaterials(GameObject t){
-            if(tree.isHDRP)
+        private void SetupLegacyMaterials(GameObject t)
+        {
+            if (tree.isHDRP)
             {
-                foreach(Material m in t.GetComponent<MeshRenderer>().sharedMaterials){
-                    if(m.shader.name == "Mtree/SRP/Leafs HDRP")
+                foreach (Material m in t.GetComponent<MeshRenderer>().sharedMaterials)
+                {
+                    if (m.shader.name == "Mtree/SRP/Leafs HDRP")
                         m.shader = Shader.Find("Mtree/Leafs");
-                    if(m.shader.name == "Mtree/SRP/Bark HDRP")
+                    if (m.shader.name == "Mtree/SRP/Bark HDRP")
                         m.shader = Shader.Find("Mtree/Bark");
                 }
-	           
+
             }
         }
-        private void SetupHDRPMaterials(GameObject t){
-            if(tree.isHDRP){
+        private void SetupHDRPMaterials(GameObject t)
+        {
+            if (tree.isHDRP)
+            {
 
-                foreach(Material m in t.GetComponent<MeshRenderer>().sharedMaterials){
-                    if(m.shader.name == "Mtree/Leafs")
+                foreach (Material m in t.GetComponent<MeshRenderer>().sharedMaterials)
+                {
+                    if (m.shader.name == "Mtree/Leafs")
                         m.shader = Shader.Find("Mtree/SRP/Leafs HDRP");
-                    if(m.shader.name == "Mtree/Bark")
+                    if (m.shader.name == "Mtree/Bark")
                         m.shader = Shader.Find("Mtree/SRP/Bark HDRP");
                 }
             }
         }
-        #endif
+#endif
 
 
         private void DisplaySaveTab()
@@ -217,31 +240,32 @@ namespace Mtree
                 serializedObject.FindProperty("saveTreeFolder").stringValue = path;
                 AssetDatabase.Refresh();
             }
-            
+
 
             EditorGUILayout.EndHorizontal();
             tree.gameObject.name = EditorGUILayout.TextField("name", tree.gameObject.name);
             EditorGUILayout.Space();
             EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.LabelField("Billboard Settings");
-            serializedObject.FindProperty("BB_Brightness").floatValue = EditorGUILayout.Slider("Brightness",serializedObject.FindProperty("BB_Brightness").floatValue, 0, 3);
+            serializedObject.FindProperty("BB_Brightness").floatValue = EditorGUILayout.Slider("Brightness", serializedObject.FindProperty("BB_Brightness").floatValue, 0, 3);
             serializedObject.FindProperty("BB_isSingleSided").intValue = GUILayout.Toolbar(serializedObject.FindProperty("BB_isSingleSided").intValue, new string[] { "Double Sided", "Single Sided" });
-            serializedObject.FindProperty("BB_hasTopCard").intValue = GUILayout.Toolbar(serializedObject.FindProperty("BB_hasTopCard").intValue, new string[] {"No Top Card","Has Top Card"});            
+            serializedObject.FindProperty("BB_hasTopCard").intValue = GUILayout.Toolbar(serializedObject.FindProperty("BB_hasTopCard").intValue, new string[] { "No Top Card", "Has Top Card" });
             if (tree.BB_hasTopCard == 1)
                 serializedObject.FindProperty("BB_TopCardPositon").floatValue = EditorGUILayout.Slider("Top Card Positon", serializedObject.FindProperty("BB_TopCardPositon").floatValue, 0, 1);
             serializedObject.ApplyModifiedProperties();
             EditorGUILayout.EndVertical();
-            if (GUILayout.Button("Save as Prefab")){
+            if (GUILayout.Button("Save as Prefab"))
+            {
 #if UNITY_2018_3_OR_NEWER
                 SetupLegacyMode();
                 SetupLegacyMaterials(tree.gameObject);
-                tree.SaveAsPrefab(false,tree.isHDRP);
+                tree.SaveAsPrefab(false, tree.isHDRP);
                 SetupHDRPMaterials(tree.gameObject);
                 SetupHDRPMode();
 #else
                 tree.SaveAsPrefab(false,false);
-#endif          
-                }
+#endif
+            }
             EditorGUILayout.EndVertical();
         }
 
@@ -300,7 +324,7 @@ namespace Mtree
         {
             EditorGUIUtility.labelWidth = 135;
             int functionCount = tree.treeFunctionsAssets.Count; // Used in multiple for loops
-    
+
             EditorGUI.BeginDisabledGroup(tree.treeFunctionsAssets[tree.selectedFunctionIndex].name == "Leaves");
             if (GUILayout.Button("Add function"))
             {
@@ -346,32 +370,35 @@ namespace Mtree
                     }
                 }
             }
-            if(e.type == EventType.MouseDown && e.button == 1){
-                for(int i = 0; i<functionCount;i++){
+            if (e.type == EventType.MouseDown && e.button == 1)
+            {
+                for (int i = 0; i < functionCount; i++)
+                {
                     TreeFunctionAsset tf = tree.treeFunctionsAssets[i];
-                    if(tf.rect.Contains(e.mousePosition - rect.position)){
-                            var menu = new GenericMenu();
-                            if(!tf.name.Contains("Trunk"))
-                                menu.AddItem(new GUIContent("Copy Tree Function"),false,SaveTF);
-                            else
-                                menu.AddDisabledItem(new GUIContent("Copy Tree Function"));
+                    if (tf.rect.Contains(e.mousePosition - rect.position))
+                    {
+                        var menu = new GenericMenu();
+                        if (!tf.name.Contains("Trunk"))
+                            menu.AddItem(new GUIContent("Copy Tree Function"), false, SaveTF);
+                        else
+                            menu.AddDisabledItem(new GUIContent("Copy Tree Function"));
 
-                                
-                            if(tree.savedFunction != null && tree.treeFunctionsAssets[tree.selectedFunctionIndex].name != "Leaves")
-                                menu.AddItem(new GUIContent("Paste Tree Function"),false,InsertTF);
-                            else
-                                menu.AddDisabledItem(new GUIContent("Paste Tree Function"));
 
-                            menu.ShowAsContext();
-                            e.Use();
-                        
+                        if (tree.savedFunction != null && tree.treeFunctionsAssets[tree.selectedFunctionIndex].name != "Leaves")
+                            menu.AddItem(new GUIContent("Paste Tree Function"), false, InsertTF);
+                        else
+                            menu.AddDisabledItem(new GUIContent("Paste Tree Function"));
+
+                        menu.ShowAsContext();
+                        e.Use();
+
                     }
                 }
             }
             GUI.BeginClip(rect);
 
             for (int i = 0; i < tree.treeFunctionsAssets.Count; i++)
-                tree.treeFunctionsAssets[i].DrawFunction(i == tree.selectedFunctionIndex, i>0);
+                tree.treeFunctionsAssets[i].DrawFunction(i == tree.selectedFunctionIndex, i > 0);
 
             GUI.EndClip();
 
@@ -391,23 +418,25 @@ namespace Mtree
             var gs = new GUIStyle();
             gs.richText = true;
             EditorGUILayout.LabelField("Wind");
-            EditorGUILayout.Slider(serializedObject.FindProperty("VColBarkModifier"),0.1f,5,new GUIContent("Bark Multiplier"));
-            EditorGUILayout.Slider(serializedObject.FindProperty("VColLeafModifier"),0.1f,5,new GUIContent("Leaf Multiplier"));
+            EditorGUILayout.Slider(serializedObject.FindProperty("VColBarkModifier"), 0.1f, 5, new GUIContent("Bark Multiplier"));
+            EditorGUILayout.Slider(serializedObject.FindProperty("VColLeafModifier"), 0.1f, 5, new GUIContent("Leaf Multiplier"));
             serializedObject.ApplyModifiedProperties();
             EditorGUILayout.EndVertical();
             if (EditorGUI.EndChangeCheck())
                 UpdateTree();
-			EditorGUILayout.Space ();
-			BezierMode ();
+            EditorGUILayout.Space();
+            BezierMode();
         }
-        
-        void SaveTF(){
+
+        void SaveTF()
+        {
             tree.savedFunction = tree.treeFunctionsAssets[tree.selectedFunctionIndex];
         }
-        void InsertTF(){
+        void InsertTF()
+        {
             var tf = Instantiate(tree.savedFunction);
             tf.parent = tree.treeFunctionsAssets[tree.selectedFunctionIndex];
-            tf.Init(tree.treeFunctionsAssets[tree.selectedFunctionIndex],true);
+            tf.Init(tree.treeFunctionsAssets[tree.selectedFunctionIndex], true);
             tree.treeFunctionsAssets.Add(tf);
             UpdateTree();
         }
@@ -421,13 +450,14 @@ namespace Mtree
         {
             return targets.Length > 1;
         }
-		private void BezierMode(){
-			EditorGUI.BeginChangeCheck ();
-			serializedObject.FindProperty("hasBezier").intValue = GUILayout.Toolbar(serializedObject.FindProperty("hasBezier").intValue,new string[]{"Use Mtree","Use Bezier"});
-			serializedObject.ApplyModifiedProperties();
-			if(EditorGUI.EndChangeCheck())
-				tree.BezierManager();
-		}
+        private void BezierMode()
+        {
+            EditorGUI.BeginChangeCheck();
+            serializedObject.FindProperty("hasBezier").intValue = GUILayout.Toolbar(serializedObject.FindProperty("hasBezier").intValue, new string[] { "Use Mtree", "Use Bezier" });
+            serializedObject.ApplyModifiedProperties();
+            if (EditorGUI.EndChangeCheck())
+                tree.BezierManager();
+        }
     }
 
 
