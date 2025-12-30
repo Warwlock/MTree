@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7028228133900889315
+--- !u!114 &-8274370213271549164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81997976e05f6e45819b5dda33c654d, type: 3}
   m_Name: Roots
   m_EditorClassIdentifier: 
-  seed: 3846
-  id: -42463156
-  parent: {fileID: -2708366734774223334}
+  seed: 691
+  id: -1599406998
+  parent: {fileID: -4701467182948483709}
   chiildren: []
   enabled: 1
   showDeleteButton: 1
@@ -89,7 +89,167 @@ MonoBehaviour:
   end: 1
   groundHeight: 0.29
   attractionStrength: 1.65
---- !u!114 &-5438871797059276108
+--- !u!114 &-4701467182948483709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156ba2a5f4fc7bf47b493b7cbf9c7f19, type: 3}
+  m_Name: Trunk
+  m_EditorClassIdentifier: 
+  seed: 5302
+  id: 1366482655
+  parent: {fileID: 0}
+  chiildren:
+  - {fileID: 3369485980041557429}
+  - {fileID: -8274370213271549164}
+  enabled: 1
+  showDeleteButton: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 200
+    height: 37
+  deleteRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  radiusMultiplier: 0.51
+  radius:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  length: 15.19
+  number: 1
+  randomness: 0.183
+  originAttraction: 0.269
+  resolution: 1.5
+  rootShape:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0048918966
+      value: 1.4980539
+      inSlope: -4.960853
+      outSlope: -4.960853
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rootRadius: 0.585
+  rootInnerRadius: 0.384
+  rootHeight: 2.39
+  rootResolution: 3
+  flareNumber: 8
+  spinAmount: 0.1
+  displacementStrength: 0.79
+  displacementSize: 0.91
+  heightOffset: 0.46
+--- !u!114 &-1705344171274670547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d8cd2303af54543a4524493d539ae8, type: 3}
+  m_Name: Leaves
+  m_EditorClassIdentifier: 
+  seed: 574
+  id: -1578425105
+  parent: {fileID: 3369485980041557429}
+  chiildren: []
+  enabled: 1
+  showDeleteButton: 1
+  rect:
+    serializedVersion: 2
+    x: 60
+    y: 68
+    width: 200
+    height: 37
+  deleteRect:
+    serializedVersion: 2
+    x: 230
+    y: 77
+    width: 18
+    height: 18
+  leafType: 0
+  number: 2406
+  customLeafMesh: {fileID: 0}
+  maxRadius: 0.219
+  size: 1.73
+  overrideNormals: 1
+  minWeight: -0.17981753
+  maxWeight: 0.6640463
+  length: 0
+  lengthCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  uLoops: 0
+  resolution: 0
+  gravityStrength: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c179839cc7e1e4bb7fdb33c0866483, type: 3}
+  m_Name: Old Oak
+  m_EditorClassIdentifier: MTree.Runtime::Mtree.TreeTemplate
+  treeFunctions:
+  - {fileID: -4701467182948483709}
+  - {fileID: 3369485980041557429}
+  - {fileID: -1705344171274670547}
+  - {fileID: -8274370213271549164}
+--- !u!114 &3369485980041557429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,11 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33897084c7891e54eb6df4c02cb4118d, type: 3}
   m_Name: Branch
   m_EditorClassIdentifier: 
-  seed: 7122
-  id: 917419818
-  parent: {fileID: -2708366734774223334}
+  seed: 3457
+  id: -1787561563
+  parent: {fileID: -4701467182948483709}
   chiildren:
-  - {fileID: 9155431047050356164}
+  - {fileID: -1705344171274670547}
   enabled: 1
   showDeleteButton: 1
   rect:
@@ -202,163 +362,4 @@ MonoBehaviour:
   upAttraction: 1.24
   start: 0.158
   gravityStrength: 1.3
---- !u!114 &-2708366734774223334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 156ba2a5f4fc7bf47b493b7cbf9c7f19, type: 3}
-  m_Name: Trunk
-  m_EditorClassIdentifier: 
-  seed: 6235
-  id: 957667277
-  parent: {fileID: 0}
-  chiildren:
-  - {fileID: -5438871797059276108}
-  - {fileID: -7028228133900889315}
-  enabled: 1
-  showDeleteButton: 0
-  rect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 200
-    height: 37
-  deleteRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  radiusMultiplier: 0.51
-  radius:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  length: 15.19
-  number: 1
-  randomness: 0.183
-  originAttraction: 0.269
-  resolution: 1.5
-  rootShape:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0048918966
-      value: 1.4980539
-      inSlope: -4.960853
-      outSlope: -4.960853
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  rootRadius: 0.585
-  rootInnerRadius: 0.384
-  rootHeight: 2.39
-  rootResolution: 3
-  flareNumber: 8
-  spinAmount: 0.1
-  displacementStrength: 0.79
-  displacementSize: 0.91
-  heightOffset: 0.46
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c179839cc7e1e4bb7fdb33c0866483, type: 3}
-  m_Name: Old Oak
-  m_EditorClassIdentifier: 
-  treeFunctions:
-  - {fileID: -2708366734774223334}
-  - {fileID: -5438871797059276108}
-  - {fileID: 9155431047050356164}
-  - {fileID: -7028228133900889315}
---- !u!114 &9155431047050356164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d8cd2303af54543a4524493d539ae8, type: 3}
-  m_Name: Leaves
-  m_EditorClassIdentifier: 
-  seed: 4330
-  id: 240323734
-  parent: {fileID: -5438871797059276108}
-  chiildren: []
-  enabled: 1
-  showDeleteButton: 1
-  rect:
-    serializedVersion: 2
-    x: 60
-    y: 68
-    width: 200
-    height: 37
-  deleteRect:
-    serializedVersion: 2
-    x: 230
-    y: 77
-    width: 18
-    height: 18
-  leafType: 0
-  number: 764
-  customLeafMesh: {fileID: 0}
-  maxRadius: 0.219
-  size: 1.73
-  overrideNormals: 1
-  minWeight: -0.17981753
-  maxWeight: 0.6640463
-  length: 0
-  lengthCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  uLoops: 0
-  resolution: 0
-  gravityStrength: 0
+  obstacleAvoidance: 0

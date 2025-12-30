@@ -9,6 +9,7 @@ Features
 
 *   **Procedural Generation:** Create unique trees using inspector-based workflows.
 *   **Mesh Export:** Export your generated trees to standard Mesh format to use in your projects without needing MTree scripts at runtime (except for wind).
+*   **MeshLOD:** Support for MeshLOD and GPU Resident Drawer.
 *   **Wind System:** Includes `MTreeWind.cs` for vertex-displacement wind animations.
 *   **LOD Support:** Automatically generates Levels of Detail with dithered corss-fade.
 *   **Full Source Code:** Modify and extend the tool as needed.
@@ -31,7 +32,16 @@ Installation
 - Enter **`https://github.com/Warwlock/MTree.git`** to install this package.
 - If Unity could not find **git**, consider installing it [here](https://git-scm.com/downloads).
 
-### Option 2: Manual Install
+### Option 2: Install via UPM
+- Go to `Edit --> Project Settings --> Package Manager`
+- Under Scoped Registries create a new one.
+- Enter this:
+   - **Name:** Warwlock
+   - **URL:** `https://registry.npmjs.com`
+   - **Scope(s):** com.warwlock
+- Go to `Window --> Package Manager` and under `My Registries`, install `MTree` package.
+
+### Option 3: Manual Install
 - Download the source code as a ZIP file.
 - Extract the folder into your Unity project's `Packages` folder (e.g., `Packages/MTree`).
 - If you want to add it to `Assets` folder, rename `Samples~` folder to `Samples` to include tree templates.
