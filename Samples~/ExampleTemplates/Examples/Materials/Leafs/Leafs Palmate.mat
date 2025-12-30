@@ -35,7 +35,7 @@ Material:
   - _SUBSURFACEMODE_ON
   - _TRANSLUCENYMODE_OFF
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2225
   stringTagMap:
