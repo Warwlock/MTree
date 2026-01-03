@@ -1,7 +1,14 @@
-//#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Input.hlsl"
+#ifndef MTREE_GENERAL_FUNCTIONS
+#define MTREE_GENERAL_FUNCTIONS
 
-#ifndef leafFuncs
-#define leafFuncs
+#ifndef MTREE_WIND_DEFINITIONS
+#define MTREE_WIND_DEFINITIONS
+float _WindStrength;
+float _RandomWindOffset;
+float _WindPulse;
+float _WindDirection;
+float _WindTurbulence;
+#endif
 
 void DirectionalEquation_float( float _WindDirection, out float2 output)
 {
@@ -11,14 +18,12 @@ void DirectionalEquation_float( float _WindDirection, out float2 output)
 	output = float2(zL,xL);
 }
 
-void If252_g478_float( int m_Switch , float3 m_Leaves , float3 m_Palm , float3 m_Grass , float3 m_None, out float3 output)
+float2 DirectionalEquation(float _WindDirection)
 {
-	float3 Output = m_None;
-	if(m_Switch == 0){Output = m_Leaves;}
-	if(m_Switch == 1){Output = m_Palm;}
-	if(m_Switch == 2){Output = m_Grass;}
-	if(m_Switch == 3){Output = m_None;}
-	output = Output;
+	float d = _WindDirection * 0.0174532924;
+	float xL = cos(d) + 1 / 2;
+	float zL = sin(d) + 1 / 2;
+	return float2(zL, xL);
 }
 
 void HSVToRGB_float( float3 c, out float3 output)
@@ -88,8 +93,8 @@ void GetCommFunc_float(out float4 dir, out float4 col, out float fade)
 		dir = half4(-0.3, -0.8, 0.6, 1);
 		col = 0;
 	#else
-		dir = half4(-0.3, -0.8, 0.6, 1);
-		col = 1;
+		dir = _MainLightPosition;
+		col = _MainLightColor;
 	#endif
 	#else
 		dir = float4(0, 1, 0, 0);
@@ -99,50 +104,107 @@ void GetCommFunc_float(out float4 dir, out float4 col, out float fade)
 	fade = unity_LODFade.x;
 }
 
-float _WindStrength;
-float _RandomWindOffset;
-float _WindPulse;
-float _WindDirection;
-float _WindTurbulence;
-
 float _WindRadius;
 float3 _WindPosition;
 int _IsLocalWind;
 
-void WindProps_float(float3 pos, out float WindStrength,
+void WindProps_float(float3 pos, float _GlobalWindInf, float _GlobalTurbulenceInf, out float WindStrength,
 			out float RandomWindOffset,
 			out float WindPulse,
 			out float WindDirection,
 			out float WindTurbulence)
 {
-	WindStrength = _WindStrength;
+	WindStrength = _WindStrength * _GlobalWindInf;
 	RandomWindOffset = _RandomWindOffset;
 	WindPulse = _WindPulse;
 	WindDirection = _WindDirection;
-	WindTurbulence = _WindTurbulence;
+	WindTurbulence = _WindTurbulence * _GlobalTurbulenceInf;
 
-	if (_IsLocalWind == 1)
+	/*if (_IsLocalWind == 1)
 	{
 		float dst = dot(pos, _WindPosition);
 		dst = max(0, _WindRadius * _WindRadius - dst) / (_WindRadius * _WindRadius);
 		WindStrength = WindStrength * dst;// (exp(-dst) * (1 - dst));
-	}
+	}*/
 }
 
-void GetMatrix_float(out float4x4 objTOworld)
+///////////////////////// Wind Strength /////////////////////////
+void WindPropsStrength_float(out float WindStrength)
 {
-	objTOworld = UNITY_MATRIX_M;
+	WindStrength = _WindStrength;
+}
+
+void WindPropsStrength_half(out half WindStrength)
+{
+	WindStrength = _WindStrength;
+}
+
+///////////////////////// Random Offset /////////////////////////
+void WindPropsRandomOffset_float(out float RandomOffset)
+{
+	RandomOffset = _RandomWindOffset;
+}
+
+void WindPropsRandomOffset_half(out half RandomOffset)
+{
+	RandomOffset = _RandomWindOffset;
+}
+
+///////////////////////// Wind Pulse /////////////////////////
+void WindPropsWindPulse_float(out float WindPulse)
+{
+	WindPulse = _WindPulse;
+}
+
+void WindPropsWindPulse_half(out half WindPulse)
+{
+	WindPulse = _WindPulse;
+}
+
+///////////////////////// Wind Direction /////////////////////////
+void WindPropsWindDirection_float(out float2 WindDirection)
+{
+	WindDirection = DirectionalEquation(_WindDirection);
+}
+
+void WindPropsWindDirection_half(out half2 WindDirection)
+{
+	WindDirection = DirectionalEquation(_WindDirection);
+}
+
+///////////////////////// Wind Turbulence /////////////////////////
+void WindPropsWindTurbulence_float(out float WindTurbulence)
+{
+	WindTurbulence = _WindTurbulence;
+}
+
+void WindPropsWindTurbulence_half(out half WindTurbulence)
+{
+	WindTurbulence = _WindTurbulence;
+}
+
+
+void LeafTypeSwitch_float(int m_Switch , float3 m_Leaves , float3 m_Palm , float3 m_Grass , float3 m_None, out float3 output)
+{
+	float3 Output = m_None;
+	if(m_Switch == 0){Output = m_Leaves;}
+	if(m_Switch == 1){Output = m_Palm;}
+	if(m_Switch == 2){Output = m_Grass;}
+	if(m_Switch == 3){Output = m_None;}
+	output = Output;
+}
+
+void LeafTypeSwitch_half(int m_Switch , float3 m_Leaves , float3 m_Palm , float3 m_Grass , float3 m_None, out float3 output)
+{
+	float3 Output = m_None;
+	if(m_Switch == 0){Output = m_Leaves;}
+	if(m_Switch == 1){Output = m_Palm;}
+	if(m_Switch == 2){Output = m_Grass;}
+	if(m_Switch == 3){Output = m_None;}
+	output = Output;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-float2 DirectionalEquation(float _WindDirection)
-{
-	float d = _WindDirection * 0.0174532924;
-	float xL = cos(d) + 1 / 2;
-	float zL = sin(d) + 1 / 2;
-	return float2(zL, xL);
-}
 			
 float3 If252_g478(int m_Switch, float3 m_Leaves, float3 m_Palm, float3 m_Grass, float3 m_None)
 {
