@@ -287,6 +287,7 @@ namespace Mtree
                 shader = Shader.Find("Mtree/SRP/Billboard HDRP");
             Material mat = new Material(shader);
             mat.mainTexture = tex;
+            mat.SetTexture("_BaseMap", tex);
             mat.SetFloat("_AlphaClip", 1);
             return mat;
         }
