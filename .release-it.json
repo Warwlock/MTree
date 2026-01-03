@@ -1,7 +1,8 @@
 {
   "git": {
     "commitMessage": "Release v${version}",
-    "tagName": "v${version}"
+    "tagName": "v${version}",
+    "changelog": "npx auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
   },
   "github": {
     "release": true,
@@ -10,5 +11,8 @@
   },
   "npm": {
     "publish": true
+  },
+  "hooks": {
+    "after:bump": "npx auto-changelog --commit-limit false --template https://raw.githubusercontent.com/release-it/release-it/main/templates/keepachangelog.hbs"
   }
 }
