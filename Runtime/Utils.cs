@@ -34,66 +34,24 @@ namespace Mtree
 
         public static Shader GetBarkShader()
         {
-            Shader shader = null;
-
-            shader = Shader.Find("Shader Graphs/BarkShader");
-
+            Shader shader = Shader.Find("Mtree/BarkShader");
             return shader;
         }
 
         public static Shader GetLeafShader()
         {
-            Shader shader = null;
-
-            shader = Shader.Find("Shader Graphs/LeafShader");
-
+            Shader shader = Shader.Find("Mtree/LeafShader");
             return shader;
         }
 
         public static Shader GetBillboardShader()
         {
-            Shader shader = null;
-            
-            switch(GetCurrentPipeline()){
-                case "legacy":
-                    shader = Shader.Find("Mtree/Billboard");
-                break;
-
-                case "lwrp":
-                    shader = Shader.Find("Mtree/SRP/Billboard LWRP");
-                break;
-
-                case "hdrp":
-                    shader = Shader.Find("Mtree/SRP/Billboard HDRP");
-                break;
-
-                case "urp":
-                    shader = Shader.Find("Universal Render Pipeline/Lit");
-                break;
-            }
+            Shader shader = Shader.Find("Mtree/BillboardShader");
             return shader;
         }
         public static Shader GetVertexColorShader()
         {
-            Shader shader = null;
-            
-            switch(GetCurrentPipeline()){
-                case "legacy":
-                    shader = Shader.Find("Hidden/Mtree/VertexColorShader");
-                break;
-
-                case "lwrp":
-                    shader = Shader.Find("Hidden/Mtree/SRP/VertexColorShader LWRP");
-                break;
-
-                case "hdrp":
-                    shader = Shader.Find("Hidden/Mtree/SRP/VertexColorShader HDRP");
-                break;
-
-                case "urp":
-                    shader = Shader.Find("Hidden/Mtree/SRP/VertexColorShader URP");
-                break;
-            }
+            Shader shader = Shader.Find("Hidden/Mtree/VertexColorShader");
             return shader;
         }
 

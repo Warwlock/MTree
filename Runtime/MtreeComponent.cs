@@ -228,14 +228,14 @@ public class MtreeComponent : MonoBehaviour
 
     public Mesh GenerateTree(bool instantAo = false)
     {
+        tree = null;
+        ExecuteFunctions();
         return GenerateTree(LODs[LodIndex].radialResolution, LODs[LodIndex].simplifyAngleThreshold,
             LODs[LodIndex].simplifyRadiusThreshold, LODs[LodIndex].simplifyLeafs, instantAo);
     }
 
     public Mesh GenerateTree(float radialResolution, float simplifyAngleThreshold, float simplifyRadiusThreshold, float simplifyLeafs, bool instantAo = false)
     {
-        tree = null;
-        ExecuteFunctions();
         tree.Simplify(simplifyAngleThreshold, simplifyRadiusThreshold);
         Mesh mesh = CreateMesh(simplifyLeafs, radialResolution);
         filter.mesh = mesh;
