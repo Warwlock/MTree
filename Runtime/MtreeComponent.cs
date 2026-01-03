@@ -378,15 +378,16 @@ public class MtreeComponent : MonoBehaviour
     }
     IEnumerator SaveAsPrefabCoroutine(bool groupedSave = false, bool isHDRP = false)
     {
-        int layer = gameObject.layer;
+        int objLayer = gameObject.layer;
         gameObject.layer = 31;
 
         yield return new WaitForSeconds(1f); // If we don't wait for a while, camera doesnt render the layer
 
+        GenerateTree(true);
         var oldMesh = filter.sharedMesh;
         string name = gameObject.name;
         string path = saveTreeFolder;
-        Debug.Log(path);
+
         if (string.IsNullOrEmpty(path))
             yield break;
 
@@ -450,7 +451,9 @@ public class MtreeComponent : MonoBehaviour
             dl.enabled = true;
         }
 
-        gameObject.layer = layer;
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.layer = objLayer;
     }
 
     void MeshLODCreator(bool isHDRP, string path, string name, GameObject TreeObject)
@@ -462,7 +465,6 @@ public class MtreeComponent : MonoBehaviour
         dataFolder = AssetDatabase.GUIDToAssetPath(dataFolder) + Path.DirectorySeparatorChar;
         Material[] materials = SaveMaterials(dataFolder);
 
-        GenerateTree(true);
         CreateBillboardMeshLOD(dataFolder, name, isHDRP, out Mesh bbMesh, out Material bbMat);
 
         var materialsList = new List<Material>();
@@ -564,7 +566,6 @@ public class MtreeComponent : MonoBehaviour
 
         // Generating Billboard
         LodIndex = LODs.Count - 1;
-        GenerateTree(true);
         GameObject billboard = CreateBillboard(dataFolder, name, isHDRP);
         Renderer[] bill_re = new Renderer[1] { billboard.GetComponent<MeshRenderer>() };
         lods[lods.Length - 1] = new LOD(.01f, bill_re);
