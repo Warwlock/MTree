@@ -198,6 +198,9 @@
     "m_Guid": {
         "m_GuidSerialized": "7752d013-d54b-445a-93f3-7b4a5a31ad11"
     },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
     "m_Name": "Palm",
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Palm",
@@ -233,7 +236,8 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
-    "m_Labels": []
+    "m_Labels": [],
+    "m_LiteralMode": false
 }
 
 {
@@ -348,6 +352,9 @@
     "m_Guid": {
         "m_GuidSerialized": "c9a3f184-1015-4977-ba40-adf14dcaa8c2"
     },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
     "m_Name": "Grass",
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Grass",
@@ -494,6 +501,9 @@
     "m_Guid": {
         "m_GuidSerialized": "0ee57b28-4ca3-4781-9ddf-140e648354fe"
     },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
     "m_Name": "Leaf",
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Leaf",
@@ -529,7 +539,8 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
-    "m_Labels": []
+    "m_Labels": [],
+    "m_LiteralMode": false
 }
 
 {
@@ -783,6 +794,9 @@
     "m_Guid": {
         "m_GuidSerialized": "812a18bd-49e0-4601-a317-ed0b0702f55a"
     },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
     "m_Name": "Switch",
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Switch",
@@ -800,6 +814,7 @@
     "m_customAttributes": [],
     "m_Value": 0.0,
     "m_FloatType": 0,
+    "m_LiteralFloatMode": false,
     "m_RangeValues": {
         "x": 0.0,
         "y": 1.0
@@ -823,6 +838,9 @@
     "m_Guid": {
         "m_GuidSerialized": "0285d462-05e4-498a-b8f2-d9124b9e32c9"
     },
+    "promotedFromAssetID": "",
+    "promotedFromCategoryName": "",
+    "promotedOrdering": -1,
     "m_Name": "None",
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "None",

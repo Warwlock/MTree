@@ -180,7 +180,7 @@ namespace Mtree
 
         private void SetupLegacyMode()
         {
-            if (Utils.GetCurrentPipeline() == "hdrp")
+            //if (Utils.GetCurrentPipeline() == "hdrp")
             {
 
                 /*tree.isHDRP = true;

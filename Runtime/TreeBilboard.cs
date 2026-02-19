@@ -283,8 +283,6 @@ namespace Mtree
             Bounds bb = target.GetComponent<MeshRenderer>().bounds;
             var pipeline = GraphicsSettings.defaultRenderPipeline;
             Shader shader = Utils.GetBillboardShader();
-            if (usingHDRP)
-                shader = Shader.Find("Mtree/SRP/Billboard HDRP");
             Material mat = new Material(shader);
             mat.mainTexture = tex;
             mat.SetTexture("_BaseMap", tex);
