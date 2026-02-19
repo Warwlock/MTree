@@ -125,21 +125,27 @@ Material:
     - GlobalWindInfluence: 1
     - GlobalWindInfluence1: 1
     - _AddPrecomputedVelocity: 0
+    - _AlphaClip: 1
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _AlphaToMask: 1
     - _Ao: 0.682
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _BaseDetail: 1
+    - _Blend: 0
     - _BlendMode: 0
+    - _BlendModePreserveSpecular: 0
     - _BumpScale: 1
     - _BumpStrength: 2
+    - _CastShadows: 1
     - _ColorShifting: 1
-    - _ColorSource: 0
+    - _ColorSource: 1
     - _ColorVariation: 0.15
     - _ConservativeDepthOffsetEnable: 0
+    - _Cull: 0
     - _CullMode: 2
     - _CullMode1: 2
     - _CullModeForward: 2
@@ -151,6 +157,7 @@ Material:
     - _DoubleSidedNormalMode: 0
     - _DstBlend: 0
     - _DstBlend2: 0
+    - _DstBlendAlpha: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
@@ -168,13 +175,14 @@ Material:
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
-    - _OcclusionStrength: 0.6
+    - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
     - _Power: 2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RayTracing: 0
+    - _ReceiveShadows: 1
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
@@ -190,6 +198,7 @@ Material:
     - _SmoothnessVariance: 0.397
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
@@ -202,6 +211,7 @@ Material:
     - _StencilWriteMaskMV: 41
     - _SubsurfaceDistortion: 0.8
     - _SupportDecals: 1
+    - _Surface: 0
     - _SurfaceType: 0
     - _TextureInfluence: 0.43
     - _TransNormalDistortion: 1
@@ -222,10 +232,13 @@ Material:
     - _WindMode: 3
     - _WindModeLeaves: 0
     - _WindStrength: 0.1
+    - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -234,5 +247,6 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SSSColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _TranslucencyTilt: {r: 1, g: 1, b: 1, a: 0}
+    - _TranslucencyTint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

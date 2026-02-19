@@ -44,6 +44,7 @@ Material:
   - _ALPHATEST_ON
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
+  - _MATERIAL_FEATURE_TRANSMISSION
   m_InvalidKeywords:
   - _GLOSSYREFLECTIONS_OFF
   - _LEAFTYPE_DEFAULT
@@ -142,22 +143,27 @@ Material:
     m_Floats:
     - GlobalWindInfluence: 1
     - _AddPrecomputedVelocity: 0
+    - _AlphaClip: 1
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
+    - _AlphaToMask: 1
     - _Ao: 0.685
     - _Attentuation: 2
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _BillboardKwToggle: 0
     - _BillboardShadowFade: 0.5
+    - _Blend: 0
     - _BlendMode: 0
+    - _BlendModePreserveSpecular: 0
     - _BumpScale: 1
     - _BumpStrength: 1.44
+    - _CastShadows: 1
     - _Clip: 0.4
     - _ColorShifting: 1
-    - _ColorSource: 1
+    - _ColorSource: 0
     - _ColorVariation: 0.139
     - _ConservativeDepthOffsetEnable: 0
     - _Cull: 2
@@ -170,12 +176,14 @@ Material:
     - _DepthOffsetEnable: 0
     - _DetailNormalMapScale: 1
     - _DiffusionProfile: 1
+    - _DiffusionProfileHash: 0
     - _Distortion: 1.38
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
     - _DstBlend2: 0
+    - _DstBlendAlpha: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 1
@@ -200,7 +208,7 @@ Material:
     - _LightingGlobalIntensity: 1
     - _LocalWindStrength: 0
     - _MaskClipValue: 0.5
-    - _MaterialID: 1
+    - _MaterialID: 5
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _Mode: 0
@@ -210,9 +218,10 @@ Material:
     - _Parallax: 0.02
     - _PerPixelSorting: 0
     - _Power: 1
-    - _QueueControl: -1
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _RayTracing: 0
+    - _ReceiveShadows: 1
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
@@ -233,6 +242,7 @@ Material:
     - _SpecularHighlights: 0
     - _Specularity: 0
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
     - _StencilRefDistortionVec: 4
@@ -251,6 +261,7 @@ Material:
     - _SubsurfaceMode: 1
     - _SubsurfacePower: 1
     - _SupportDecals: 1
+    - _Surface: 0
     - _SurfaceType: 0
     - _ThicknessStrength: 1
     - _TransAmbient: 0.479
@@ -285,10 +296,13 @@ Material:
     - _WindModeLeaves: 0
     - _WindQuality: 0
     - _WindStrength: 0.1
+    - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     - __dirty: 0
     - _transmission: 2
     m_Colors:
@@ -296,6 +310,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorVariation: {r: 0.5, g: 1, b: 0.50344825, a: 1}
     - _CustomLightColor: {r: 0.6704477, g: 1, b: 0, a: 1}
+    - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfile_asset: {r: -6.315383e-37, g: -7.0622125e-27, b: 4.6171996e-22, a: -8.3853756e-30}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

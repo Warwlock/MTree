@@ -31,6 +31,7 @@ Material:
   - _ALPHATEST_ON
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
+  - _MATERIAL_FEATURE_COLORED_TRANSMISSION
   m_InvalidKeywords:
   - _GLOSSYREFLECTIONS_OFF
   - _LEAFTYPE_DEFAULT
@@ -156,6 +157,7 @@ Material:
     - _Cutout: 0.159
     - _DepthOffsetEnable: 0
     - _DetailNormalMapScale: 1
+    - _DiffusionProfileHash: 0
     - _Distortion: 0.52
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
@@ -185,7 +187,7 @@ Material:
     - _LightSouce: 0
     - _LocalWindStrength: 0
     - _MaskClipValue: 0.5
-    - _MaterialID: 1
+    - _MaterialID: 6
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _Mode: 1
@@ -196,7 +198,7 @@ Material:
     - _Parallax: 0.02
     - _PerPixelSorting: 0
     - _Power: 1.2
-    - _QueueControl: -1
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -278,6 +280,7 @@ Material:
     - _Color: {r: 0.91744417, g: 1, b: 0.83823526, a: 1}
     - _ColorVariation: {r: 1, g: 0.7981892, b: 0.6556604, a: 1}
     - _CustomLightColor: {r: 0.6704477, g: 1, b: 0, a: 1}
+    - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.1}
