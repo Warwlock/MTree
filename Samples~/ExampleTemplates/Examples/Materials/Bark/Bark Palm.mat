@@ -175,6 +175,8 @@ Material:
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
+    - _OcclusionEnum: 0
+    - _OcclusionSource: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0

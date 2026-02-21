@@ -146,7 +146,7 @@ Material:
     - _BumpStrength: 1.5
     - _Clip: 0.4
     - _ColorShifting: 1
-    - _ColorSource: 1
+    - _ColorSource: 0
     - _ColorVariation: 0.15
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 0
@@ -192,6 +192,7 @@ Material:
     - _Metallic: 0
     - _Mode: 1
     - _NormalMapKwToggle: 0
+    - _OcclusionSource: 0
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _OutlineThickness1: 0

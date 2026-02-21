@@ -149,6 +149,7 @@ Material:
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 1
+    - _AmbientColorSource: 0
     - _Ao: 0.685
     - _Attentuation: 2
     - _BUILTIN_QueueControl: -1
@@ -213,6 +214,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _NormalMapKwToggle: 0
+    - _OcclusionEnum: 0
+    - _OcclusionSource: 0
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
@@ -321,6 +324,7 @@ Material:
     - _SSSColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _SubsurfaceCustomColor: {r: 0.3411765, g: 0.3294118, b: 0.2509804, a: 1}
+    - _TransAmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyTilt: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyTint: {r: 1, g: 1, b: 1, a: 1}

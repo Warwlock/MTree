@@ -139,6 +139,7 @@ Material:
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 1
+    - _AmbientColorSource: 0
     - _Ao: 0.813
     - _Attentuation: 4.44
     - _BUILTIN_QueueControl: -1
@@ -152,7 +153,7 @@ Material:
     - _BumpStrength: 1.5
     - _CastShadows: 1
     - _Clip: 0.4
-    - _ColorShifting: 0
+    - _ColorShifting: 1
     - _ColorSource: 0
     - _ColorVariation: 0.054
     - _ConservativeDepthOffsetEnable: 0
@@ -205,6 +206,8 @@ Material:
     - _Metallic: 0
     - _Mode: 1
     - _NormalMapKwToggle: 0
+    - _OcclusionEnum: 0
+    - _OcclusionSource: 0
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _OutlineThickness1: 0
@@ -303,7 +306,7 @@ Material:
     - _transmission: 3
     m_Colors:
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
-    - _AmbientColor: {r: 1, g: 0.80689657, b: 0, a: 1}
+    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorVariation: {r: 1, g: 0.7981892, b: 0.6556604, a: 1}
     - _CustomLightColor: {r: 0.6704477, g: 1, b: 0, a: 1}
@@ -319,6 +322,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _SubsurfaceCustomColor: {r: 0.3411765, g: 0.3294118, b: 0.2509804, a: 1}
+    - _TransAmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _TranslucencyColor: {r: 1, g: 0, b: 0, a: 1}
     - _TranslucencyTilt: {r: 1, g: 1, b: 1, a: 0}
     - _TranslucencyTint: {r: 1, g: 1, b: 1, a: 1}

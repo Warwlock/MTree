@@ -162,6 +162,8 @@ Material:
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _Mode: 0
+    - _OcclusionEnum: 0
+    - _OcclusionSource: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
