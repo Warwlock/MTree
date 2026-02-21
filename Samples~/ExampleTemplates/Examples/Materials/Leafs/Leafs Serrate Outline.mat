@@ -192,7 +192,7 @@ Material:
     - _Metallic: 0
     - _Mode: 1
     - _NormalMapKwToggle: 0
-    - _OcclusionSource: 0
+    - _OcclusionSource: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _OutlineThickness1: 0

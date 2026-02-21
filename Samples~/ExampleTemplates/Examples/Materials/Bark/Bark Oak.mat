@@ -123,7 +123,7 @@ Material:
     - _Ao: 0.682
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
-    - _BaseDetail: 1
+    - _BaseDetail: 0
     - _BlendMode: 0
     - _BumpScale: 1
     - _BumpStrength: 1.5
@@ -155,7 +155,7 @@ Material:
     - _GlossinessThreshold: 0
     - _GlossinessVariance: 0
     - _GlossyReflections: 1
-    - _Height: 0.186
+    - _Height: 0.222
     - _Hue: 0
     - _LocalWindStrength: 0
     - _LocalWindStrength1: 0

@@ -41,7 +41,6 @@ Material:
   - _ALPHATEST_ON
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
-  - _MATERIAL_FEATURE_TRANSMISSION
   m_InvalidKeywords:
   - _GLOSSYREFLECTIONS_OFF
   - _LEAFTYPE_DEFAULT
@@ -204,13 +203,13 @@ Material:
     - _LightingGlobalIntensity: 1
     - _LocalWindStrength: 0
     - _MaskClipValue: 0.5
-    - _MaterialID: 5
+    - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _Mode: 0
     - _NormalMapKwToggle: 0
     - _OcclusionEnum: 0
-    - _OcclusionSource: 0
+    - _OcclusionSource: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
