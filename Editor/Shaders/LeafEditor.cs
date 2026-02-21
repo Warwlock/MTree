@@ -46,12 +46,19 @@ public class LeafEditor : ShaderGUI
         Off
     }
 
+    enum OcclusionSource
+    {
+        Color,
+        ShaderAmbient
+    }
+
     CullMode mode;
     DoubleSidedNormal dsNorm;
     ColorShifting colShift;
     TranslucencyEnum transEnum;
     ColorSource colSource;
     WindModeLeaves windMode;
+    OcclusionSource occlSrc;
 
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
@@ -124,6 +131,13 @@ public class LeafEditor : ShaderGUI
             property.floatValue = (int)windMode;
             return;
         }
+        if (property.name == "_OcclusionSource")
+        {
+            occlSrc = (OcclusionSource)property.floatValue;
+            occlSrc = (OcclusionSource)DrawEnum(occlSrc, property.displayName);
+            property.floatValue = (int)occlSrc;
+            return;
+        }
         materialEditor.ShaderProperty(property, property.displayName);
     }
 
@@ -164,7 +178,7 @@ public class LeafEditor : ShaderGUI
             EditorGUILayout.LabelField("Other Settings", headerStyle);
         }
 
-        if (index == 22)
+        if (index == 23)
         {
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Wind Settings", headerStyle);

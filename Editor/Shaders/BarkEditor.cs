@@ -12,7 +12,14 @@ public class BarkEditor : ShaderGUI
         Off
     }
 
+    enum OcclusionSource
+    {
+        Color,
+        ShaderAmbient
+    }
+
     DetailSettings dSets;
+    OcclusionSource occlSrc;
 
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
@@ -57,6 +64,13 @@ public class BarkEditor : ShaderGUI
             property.floatValue = (int)dSets;
             return;
         }
+        if (property.name == "_OcclusionSource")
+        {
+            occlSrc = (OcclusionSource)property.floatValue;
+            occlSrc = (OcclusionSource)DrawEnum(occlSrc, property.displayName);
+            property.floatValue = (int)occlSrc;
+            return;
+        }
         materialEditor.ShaderProperty(property, property.displayName);
     }
 
@@ -91,7 +105,7 @@ public class BarkEditor : ShaderGUI
             EditorGUILayout.LabelField("Other Settings", headerStyle);
         }
 
-        if (index == 15)
+        if (index == 16)
         {
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Wind Settings", headerStyle);
