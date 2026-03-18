@@ -1,5 +1,22 @@
 # Changelog
 
+## [v1.2.0](https://github.com/Warwlock/MTree/compare/v1.1.1...v1.2.0) (2026-03-18)
+
+- Fixed all noodly nodes with organised subgraphs for vertex shaders [`c95ea07`](https://github.com/Warwlock/MTree/commit/c95ea07f025c8fd28c39b27a8c7f199bb99e36d1)
+- Fragment Shader Nodes organised into better readability; Fixed translucency normal and color problems [`23c47d5`](https://github.com/Warwlock/MTree/commit/23c47d5bc3026c1e64a62eafd79d9d536108a412)
+- Fixed sample material Leaf Translucency and Bark Detail [`18cd85f`](https://github.com/Warwlock/MTree/commit/18cd85fd8c367b1899fc95605fb74daa0764948f)
+- Update sample example template; Fix vertex color shader [`fb86903`](https://github.com/Warwlock/MTree/commit/fb86903f86625308384dcbcf26a72841003153f9)
+- Fixed HDRP Translucency Errors; Added Example Diffusion Profile [`ce50687`](https://github.com/Warwlock/MTree/commit/ce50687c2362b1add0beac43056f23893ef30fd8)
+- Added wind support and better billboard shader [`022930d`](https://github.com/Warwlock/MTree/commit/022930d268f67f58abbf6197abcba86a0d8e5645)
+- Added occlusion source control for both bark and leaf shader (color / shader ambient) [`46300c1`](https://github.com/Warwlock/MTree/commit/46300c1de1f8274011941443716ad18e02e6b571)
+- Occlusion source method changed for sample materials - Bark:Ambient Shader - Leaf:Color [`b7a5f41`](https://github.com/Warwlock/MTree/commit/b7a5f418eda99c7e0198d11d490cf78c6d13ab8a)
+- Add "MtreeShader" namespace to leaf and brak shader editors. [`9cc4dc6`](https://github.com/Warwlock/MTree/commit/9cc4dc6683d21255b331ac719c18277334218b11)
+- HDRP Translucency and Diffusion Profile Tests [`c88112d`](https://github.com/Warwlock/MTree/commit/c88112daae85165506f1a30865e5059ced24300b)
+- Remove unnecessary gameobjects from sample template scene [`df24903`](https://github.com/Warwlock/MTree/commit/df24903e738460b55e7a691502f347693f84e128)
+- Purge unusued code [`eb2a48f`](https://github.com/Warwlock/MTree/commit/eb2a48fa278776e51aa62537312e4a9b238b4acd)
+- Fixed sometimes creating prefab results error and object layer doesnt return [`79c9f70`](https://github.com/Warwlock/MTree/commit/79c9f708db1757b335c02a047d032528e2813487)
+- Release v1.2.0 [`4706f8d`](https://github.com/Warwlock/MTree/commit/4706f8da4711fe74aaec7379c2648e9fc6e19e88)
+
 ## [v1.1.1](https://github.com/Warwlock/MTree/compare/v1.1.0...v1.1.1) (2026-01-03)
 
 - Fix tree creation code and shader errors. [`dfca2d6`](https://github.com/Warwlock/MTree/commit/dfca2d65809f75a6e28c4e59f757407cc87c00bc)
