@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Transmission
   m_EditorClassIdentifier: 
   profile:
-    scatteringDistance: {r: 0.74901956, g: 0.6770268, b: 0.07537294, a: 1}
+    scatteringDistance: {r: 0.74901956, g: 0.6770268, b: 0.07537293, a: 1}
     scatteringDistanceMultiplier: 1.3350785
     transmissionTint: {r: 1, g: 1, b: 1, a: 1}
     texturingMode: 0

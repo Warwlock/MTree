@@ -30,7 +30,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -137,6 +137,7 @@ Material:
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
     - _DetailNormalMapScale: 1
+    - _DiffusionProfileHash: 0
     - _Distortion: 2
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
@@ -155,7 +156,7 @@ Material:
     - _GlossinessThreshold: 0
     - _GlossinessVariance: 0
     - _GlossyReflections: 1
-    - _Height: 0.222
+    - _Height: 0.125
     - _Hue: 0
     - _LocalWindStrength: 0
     - _LocalWindStrength1: 0
@@ -182,7 +183,7 @@ Material:
     - _SSSScale: 0.1
     - _Saturation: 1
     - _Scale: 2
-    - _Smooth: 5.4
+    - _Smooth: 2.4
     - _Smoothness: 0.209
     - _SmoothnessTextureChannel: 0
     - _SmoothnessThreshold: 0.318
@@ -190,19 +191,19 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 1
     - _StencilRefDistortionVec: 4
     - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefMV: 33
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 15
-    - _StencilWriteMaskMV: 41
+    - _StencilWriteMaskMV: 43
     - _SubsurfaceDistortion: 0.8
     - _SupportDecals: 1
     - _SurfaceType: 0
-    - _TextureInfluence: 0.483
+    - _TextureInfluence: 0.642
     - _TransNormalDistortion: 1
     - _TransScale: 1
     - _TransScattering: 1
@@ -219,7 +220,7 @@ Material:
     - _UVSec: 0
     - _UseShadowThreshold: 0
     - _Value: 1
-    - _WindMode: 0
+    - _WindMode: 3
     - _WindModeLeaves: 0
     - _WindStrength: 0.1
     - _ZTestDepthEqualForOpaque: 3
@@ -230,10 +231,12 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 0}
+    - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SSSColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _TranslucencyTilt: {r: 1, g: 1, b: 1, a: 0}
+    - _TranslucencyTint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6745447254009654014

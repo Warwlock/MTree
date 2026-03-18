@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9028069341931122631
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa486462e6be1764e89c788ba30e61f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEditor.Rendering.HighDefinition.MaterialExternalReferences
+  m_DiffusionProfileReferences:
+  - {fileID: 11400000, guid: 2384dbf2c1c420f45a792fbc315fbfb1, type: 2}
+  m_MaterialReferences: []
 --- !u!114 &-5494223742092695715
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -54,17 +69,17 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHATEST_ON
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
-  m_InvalidKeywords: []
+  - _MATERIAL_FEATURE_TRANSMISSION
+  m_InvalidKeywords:
+  - _MATERIAL_FEATURE_CLEAR_COAT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2475
+  m_CustomRenderQueue: 2450
   stringTagMap:
     MotionVector: User
-    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPrepass
@@ -135,6 +150,7 @@ Material:
     - _COLORSOURCE: 0
     - _CULLMODE: 0
     - _CastShadows: 1
+    - _ClearCoatEnabled: 1
     - _Clip: 0.5
     - _ColorShifting: 1
     - _ColorSource: 0
@@ -150,10 +166,11 @@ Material:
     - _DOUBLESIDEDNORMALMODE: 0
     - _DepthOffsetEnable: 0
     - _DiffusionProfile: 1
-    - _DiffusionProfileHash: 0
+    - _DiffusionProfileHash: 3.2125454
+    - _Diffusion_Profile: 3.8956573
     - _Distortion: 1.38
     - _DoubleSidedEnable: 1
-    - _DoubleSidedGIMode: 1
+    - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
     - _DstBlend2: 0
@@ -182,7 +199,7 @@ Material:
     - _LocalWindStrength: 0
     - _MTREE_LEAF: 1
     - _MaskClipValue: 0.5
-    - _MaterialID: 1
+    - _MaterialID: 5
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _OcclusionEnum: 0
@@ -245,7 +262,7 @@ Material:
     - _TransScattering: 12.7
     - _TransShadow: 0.521
     - _TransShadow1: 0.42
-    - _Translucency: 25.6
+    - _Translucency: 25
     - _Translucency1: 0.5711765
     - _TranslucencyEnum: 1
     - _TranslucencyIntensity: 1
@@ -284,8 +301,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorVariation: {r: 0.9862069, g: 1, b: 0, a: 1}
     - _CustomLightColor: {r: 0.35427305, g: 0.5283019, b: 0, a: 1}
-    - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
+    - _DiffusionProfileAsset: {r: -1.3958499e+19, g: 0.00000044323576, b: -5.622626e+27, a: 1.4570443e-25}
     - _DiffusionProfile_asset: {r: -6.315383e-37, g: -7.0622125e-27, b: 4.6171996e-22, a: -8.3853756e-30}
+    - _Diffusion_Profile_Asset: {r: -8.695931e+30, g: -5.0949594e+31, b: -0.010710085, a: -0.0000000055696536}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
