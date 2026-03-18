@@ -13,25 +13,6 @@ namespace Mtree
 {
     public class Utils
     {
-        public static string GetCurrentPipeline()
-        {
-            var ActivePipeline = "legacy";
-            if (GraphicsSettings.defaultRenderPipeline != null)
-            {
-                if (GraphicsSettings.defaultRenderPipeline.GetType().ToString().Contains("LightweightRenderPipelineAsset"))
-                    ActivePipeline = "lwrp";
-                if (GraphicsSettings.defaultRenderPipeline.GetType().ToString().Contains("UniversalRenderPipelineAsset"))
-                    ActivePipeline = "urp";
-                if (GraphicsSettings.defaultRenderPipeline.GetType().ToString().Contains("HDRenderPipelineAsset"))
-                    ActivePipeline = "hdrp";
-            }
-            else
-            {
-                ActivePipeline = "legacy";
-            }
-            return ActivePipeline;
-        }
-
         public static Shader GetBarkShader()
         {
             Shader shader = Shader.Find("Mtree/BarkShader");
@@ -141,20 +122,6 @@ namespace Mtree
                 cols[i].a = copyCols[i].a;
             texture.SetPixels(cols);
         }
-        
-        // [Removed dueto HDRP]
-
-        // private static void RemoveBackground(ref Color[] colors)
-        // {
-        //     Debug.Log("Removing");
-        //     Color backgroundColor = new Color(0.173f, 0.294f, 0.471f);
-        //     for (int i = 0; i < colors.Length; i++)
-        //     {
-        //         Color c = colors[i];
-        //         if (Mathf.Abs(c.r - backgroundColor.r) + Mathf.Abs(c.g - backgroundColor.g) + Mathf.Abs(c.b - backgroundColor.b) < .05)
-        //             colors[i] = new Color(0, 0, 0, 0);
-        //     }
-        // }
 
         public static void AddTriangle(Queue<int> triangles ,int i1, int i2, int i3)
         {
