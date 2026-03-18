@@ -3618,7 +3618,7 @@
             "m_Id": "faabb34051dc4d08b4c7dddc6dbcb8a9"
         }
     ],
-    "m_CustomEditorGUI": "BarkEditor",
+    "m_CustomEditorGUI": "MtreeShader.BarkEditor",
     "m_SupportVFX": false,
     "m_SupportLineRendering": false
 }
@@ -4326,7 +4326,7 @@
     "m_AdditionalMotionVectorMode": 0,
     "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": true,
-    "m_CustomEditorGUI": "BarkEditor",
+    "m_CustomEditorGUI": "MtreeShader.BarkEditor",
     "m_SupportVFX": false
 }
 
@@ -4455,7 +4455,7 @@
     "m_AlphaMode": 0,
     "m_RenderFace": 2,
     "m_AlphaClip": false,
-    "m_CustomEditorGUI": "BarkEditor"
+    "m_CustomEditorGUI": "MtreeShader.BarkEditor"
 }
 
 {
