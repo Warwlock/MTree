@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.1.1](https://github.com/Warwlock/MTree/compare/v1.1.0...v1.1.1) (2026-01-03)
+
+- Fix tree creation code and shader errors. [`dfca2d6`](https://github.com/Warwlock/MTree/commit/dfca2d65809f75a6e28c4e59f757407cc87c00bc)
+- Fixed billboard shader issues for all render-pipelines [`e60104a`](https://github.com/Warwlock/MTree/commit/e60104afb89be02110039dab65d01d25cd722814)
+- Release v1.1.1 [`2b8a4a3`](https://github.com/Warwlock/MTree/commit/2b8a4a362db4aeffa30aa9bd9bd553328d7f2566)
+- Auto-Changelog [`292605c`](https://github.com/Warwlock/MTree/commit/292605cd18498c542778218f9d00c96bb9243b3d)
+
 ## [v1.1.0](https://github.com/Warwlock/MTree/compare/v1.0.8...v1.1.0) (2025-12-30)
 
 - 6.3 birp hdrp issues fixed [`#3`](https://github.com/Warwlock/MTree/pull/3)
