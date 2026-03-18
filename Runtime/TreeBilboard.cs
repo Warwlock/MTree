@@ -285,8 +285,8 @@ namespace Mtree
             Shader shader = Utils.GetBillboardShader();
             Material mat = new Material(shader);
             mat.mainTexture = tex;
-            mat.SetTexture("_BaseMap", tex);
-            mat.SetFloat("_AlphaClip", 1);
+            mat.SetTexture("_MainTex", tex);
+            mat.SetFloat("_AlphaClip", 0.8f);
             return mat;
         }
 

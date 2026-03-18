@@ -10,6 +10,7 @@ float _RandomWindOffset;
 float _WindPulse;
 float _WindDirection;
 float _WindTurbulence;
+float _WindStrengthBillboard;
 #endif
 
 void DirectionalEquation_float( float _WindDirection, out float2 output)
@@ -220,6 +221,17 @@ void WindPropsWindTurbulence_float(out float WindTurbulence)
 void WindPropsWindTurbulence_half(out half WindTurbulence)
 {
 	WindTurbulence = _WindTurbulence;
+}
+
+///////////////////// Wind Strength Billboard /////////////////////
+void WindPropsStrengthBillboard_float(out float WindStrengthBillboard)
+{
+	WindStrengthBillboard = _WindStrengthBillboard;
+}
+
+void WindPropsStrengthBillboard_half(out half WindStrengthBillboard)
+{
+	WindStrengthBillboard = _WindStrengthBillboard;
 }
 
 

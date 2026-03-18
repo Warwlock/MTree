@@ -16,8 +16,8 @@ public class MtreeWind : MonoBehaviour {
     public float windTurbulence = 0;
     [Range(0,1)]public float windRandomness = 1;
     [Header("Billboard")]
-    public bool BillboardWind = false;
-    [Range(0,1)]public float BillboardWindInfluence = .5f;
+    public bool BillboardWind = true;
+    [Range(0,2)]public float BillboardWindInfluence = 1f;
 
     // Updatecheck values
     float m_windStrength, m_windDirection, m_windPulse, m_windTurbulence, m_windRadius;
@@ -56,7 +56,6 @@ public class MtreeWind : MonoBehaviour {
     {
         Shader.SetGlobalFloat("_WindRadius", windZone.radius);
         Shader.SetGlobalVector("_WindPosition", transform.position);
-        Shader.SetGlobalInt("_IsLocalWind", windZone.mode == WindZoneMode.Spherical ? 1 : 0);
 
         Shader.SetGlobalFloat("_WindStrength",windZone.windMain + windStrength);
         Shader.SetGlobalFloat("_WindDirection",windZone.transform.localRotation.eulerAngles.y + windDirection);
@@ -70,13 +69,7 @@ public class MtreeWind : MonoBehaviour {
         if(windZone != null)
             UpdateWindZone();
 
-        if(BillboardWind){
-            Shader.SetGlobalInt("BillboardWindEnabled",0);
-            Shader.SetGlobalFloat("Billboard_WindStrength",BillboardWindInfluence);
-            }
-        if(!BillboardWind){
-            Shader.SetGlobalInt("BillboardWindEnabled",1);
-            }
+        Shader.SetGlobalFloat("_WindStrengthBillboard",BillboardWindInfluence * (BillboardWind ? 1 : 0));
         
     }
 	public void ResetToZero(){
